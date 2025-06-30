@@ -1,12 +1,8 @@
 <p align="center">
   <a href="https://builderbot.vercel.app/">
-    <picture>
-      <img src="https://builderbot.vercel.app/assets/thumbnail-vector.png" height="80">
-    </picture>
     <h2 align="center">BuilderBot</h2>
   </a>
 </p>
-
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@builderbot/bot">
     <img alt="" src="https://img.shields.io/npm/v/@builderbot/bot?color=%2300c200&label=%40bot-whatsapp">
@@ -45,6 +41,7 @@ Compila el proyecto usando Rollup como empaquetador de módulos. Esto prepara la
 - `CHATWOOT_INBOX_ID`: Identificador del buzón de entrada en Chatwoot.
 - `CHATWOOT_API_ACCESS_TOKEN`: Token de acceso para autenticar con la API de Chatwoot.
 - `PORT`: Puerto en el que se ejecutará la aplicación.
+- `OPENAI_API_KEY`: Clave de API para generar respuestas automáticas usando IA.
 
 Asegúrate de configurar estas variables en tu archivo `.env` antes de iniciar la aplicación.
 
