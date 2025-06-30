@@ -2,6 +2,7 @@ import { Chatwoot_Client } from "./chatwoot_client.js";
 import Queue from "queue-promise";
 import { join } from "path";
 import _ from "lodash";
+import { generateAIResponse } from "./ai_responder.js";
 
 export class BotWrapper {
   static BotInstance = null;
@@ -294,6 +295,21 @@ export class BotWrapper {
       );
     }
 
-    return await this.Chatwoot.sendMessage(from, body, "incoming", false, name);
+    const res = await this.Chatwoot.sendMessage(
+      from,
+      body,
+      "incoming",
+      false,
+      name
+    );
+
+    const aiReply = await generateAIResponse(body);
+    if (aiReply) {
+      await this.BotInstance.provider.sendText(from, aiReply);
+      await this.Chatwoot.sendMessage(from, aiReply, "outgoing", false);
+      return aiReply;
+    }
+
+    return res;
   }
 }
